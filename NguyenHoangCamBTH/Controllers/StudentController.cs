@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using NguyenHoangCamBTH.Models;
 
 
-namespace BTH2002.Controllers;
+namespace NguyenHoangCamBTH.Controllers;
     public class StudentController : Controller
     {
        
