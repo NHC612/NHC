@@ -37,7 +37,7 @@ namespace BaiThucHanh0703.Controllers
          public IActionResult Giaiptb2(string hesoA, string hesoB, string hesoC)
         {
             //khai bao bien
-            double delta, x1, x2, a =0, b=0, c=0;
+            double delta, x1, x2, a=0, b=0, c=0;
             string ketqua;
             //Giai phuong trinh
             if(!String.IsNullOrEmpty(hesoA)) a = Convert.ToDouble(hesoA);
