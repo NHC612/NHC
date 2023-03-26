@@ -1,9 +1,10 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace BaiThucHanh0703.Models
 {
     public class Student
     {
-        public string FullName { get; set; }
-        public string StudentCode { get; set; }
-        public string  Address { get; set; }
+        public string StudentID { get; set;}
+        public string StudentName { get; set;}
     }
 }
