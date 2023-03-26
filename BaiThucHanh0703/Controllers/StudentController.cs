@@ -1,8 +1,32 @@
 using Microsoft.AspNetCore.Mvc;
+using BaiThucHanh0703.Models;
+using BaiThucHanh0703.Models.Process;
 
 namespace BaiThucHanh0703.Controllers
 {
     public class StudentController : Controller
+    {
+        private readonly ApplicationDbContext _context;
+        public StudentController { ApplicationDbContext context}
+        {
+            _context = context;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var model = await _context.Student.ToListAsync();
+            return View(model);
+        }
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create(Student std)
+        {
+            if 
+        }
+    }
     {
         public IActionResult Index()
         {
@@ -64,6 +88,21 @@ namespace BaiThucHanh0703.Controllers
             ViewBag.message = ketqua;
             return View();
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+         public IActionResult Create(Student std)
+        {
+            string kq = std.StudentCode + "-" + std.FullName + "-" + std.Address ;
+            ViewBag.mess = kq;
+            return View();
+
+        }
+       
     }
+
 
 }
