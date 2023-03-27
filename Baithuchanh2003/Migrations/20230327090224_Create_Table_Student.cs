@@ -5,21 +5,22 @@
 namespace Baithuchanh2003.Migrations
 {
     /// <inheritdoc />
-    public partial class Create_migration : Migration
+    public partial class Create_Table_Student : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Students",
+                name: "Student",
                 columns: table => new
                 {
-                    StudentID = table.Column<string>(type: "TEXT", nullable: false),
-                    StudentName = table.Column<string>(type: "TEXT", nullable: false)
+                    StudentCode = table.Column<string>(type: "TEXT", nullable: false),
+                    FullName = table.Column<string>(type: "TEXT", nullable: false),
+                    Address = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Students", x => x.StudentID);
+                    table.PrimaryKey("PK_Student", x => x.StudentCode);
                 });
         }
 
@@ -27,7 +28,7 @@ namespace Baithuchanh2003.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Students");
+                name: "Student");
         }
     }
 }

@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace BaiThucHanh0703.Migrations
+namespace Baithuchanh2003.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230326103837_Create_migration")]
-    partial class Create_migration
+    [Migration("20230327090224_Create_Table_Student")]
+    partial class Create_Table_Student
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,14 +21,18 @@ namespace BaiThucHanh0703.Migrations
 
             modelBuilder.Entity("BaiThucHanh0703.Models.Student", b =>
                 {
-                    b.Property<string>("StudentID")
+                    b.Property<string>("StudentCode")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("StudentName")
+                    b.Property<string>("Address")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("StudentID");
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("StudentCode");
 
                     b.ToTable("Student");
                 });

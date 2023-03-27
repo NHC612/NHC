@@ -1,38 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using BaiThucHanh0703.Models;
-using Microsoft.EntityFrameworkCore;
+
 namespace BaiThucHanh0703.Controllers
 {
     public class StudentController : Controller
     {
-        private readonly ApplicationDbContext context)
-        {
-            _context = context;
-        }
-        public async Task<IActionResult> Index()
-        {
-            var model = await _context.Student.ToListAsync();
-            return View(model);
-        }
-        public IActionResult Create()
-        {
-            return View();
-        }
-        [HttpPost]
-        public async Task<IActionResult> Create(Student std);
-        {
-            if(ModelState.IsValid)
-            {
-                _context.Add(std);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(std);
-        }
         
-    }
-}
-    {
         public IActionResult Index()
         {
             return View();
@@ -46,7 +19,7 @@ namespace BaiThucHanh0703.Controllers
             return View();
             //tra ve danh sach cac sinh vien trong Database
         }
-         public IActionResult Tinhtong(string Number)
+         public IActionResult Tinhtong(string Number)                                                                                                                                                                         
         {
             int so = Convert.ToInt32(Number);
             int tong = 0;
@@ -94,6 +67,20 @@ namespace BaiThucHanh0703.Controllers
             ViewBag.message = ketqua;
             return View();
         }
-    }    
-    
 
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        
+        public IActionResult Create(Student std)
+        {
+            string  kq = std.StudentCode + "-" + std.FullName +"-" + std.Address ;
+            ViewBag.mess=kq;
+            return View();
+        }
+    }
+
+}
