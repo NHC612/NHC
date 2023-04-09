@@ -1,19 +1,18 @@
 @model IEnumerable<Baithuchanh2003.Models.Student>
-  <p>
-    <a class="btn btn-success" asp-action="Create">Create a new Student</a>
-  </p>
-  <table> class="table table-all">
+<p>
+    <a class ="btn btn-success" asp asp-action="Create"> Create a new Student</a>
+</p>
+<table class="table table-all">
     <tr>
-      <th>Student Id</th>
-      <th>Student Name</th>
+        <th> Student Id</th>
+        <th>Student Name</th>
     </tr>
     @foreach (var item in Model)
     {
-      <tr>
-        <td>@Html.DisplayFor(m => item.StudentCode)</td>
-        <td>@Html.DisplayFor(m => item.FullName)</td>
-         <td>@Html.DisplayFor(m => item.Address)</td>
-      </tr>
+        <tr>
+            <td>@Html.DisplayFor(m => item.StudentID)</td>
+            <td>@Html.DisplayFor(m => item.StudentName)</td>
+        </tr>
     }
 
-  </table>
+</table>

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "1avWuB+qAhK2VXZf4LnV/S7fD7E91bddU0Qnw+BJ1+E=",
+  "Hash": "MU2kf9Io3jeIIwRTtP29/qs3Knzu3rlLXIAR09DiYc0=",
   "Source": "Baithuchanh2003",
   "BasePath": "_content/Baithuchanh2003",
   "Mode": "Default",
@@ -66,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\Users\\Nitro\\Desktop\\NHC\\Baithuchanh2003\\wwwroot\\css\\w3.css",
+      "SourceId": "Baithuchanh2003",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Nitro\\Desktop\\NHC\\Baithuchanh2003\\wwwroot\\",
+      "BasePath": "_content/Baithuchanh2003",
+      "RelativePath": "css/w3.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\w3.css"
     },
     {
       "Identity": "C:\\Users\\Nitro\\Desktop\\NHC\\Baithuchanh2003\\wwwroot\\favicon.ico",

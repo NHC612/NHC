@@ -1,13 +1,11 @@
-
 using System.ComponentModel.DataAnnotations;
-
 namespace Baithuchanh2003.Models
 {
     public class Student
     {
-        [Key]
-        public string StudentCode { get; set;}
-        public string FullName { get; set;}
-        public string Address { get; set;}
+       [Key]
+        public string StudentID { get; set; }
+        public string StudentName { get; set; } //prop
+        public string Address { get; set; }
     }
 }

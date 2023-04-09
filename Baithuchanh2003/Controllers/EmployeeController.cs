@@ -1,35 +1,120 @@
 using Microsoft.AspNetCore.Mvc;
 using Baithuchanh2003.Models;
-using Baithuchanh2003.Models.Process;
+using Baithuchanh2003.Data;
+using Microsoft.EntityFrameworkCore;
 
-namespace BaiThucHanh0703.Controllers
+namespace Baithuchanh2003.Controllers
+
 {
-    public class EmployeeController : Controller
-    {
-        public IActionResult Index()
+    public class EmployeeController : Controller{
+        private readonly ApplicationDbContext _context;
+        public EmployeeController (ApplicationDbContext context)
         {
-            return View();
+            _context = context;
         }
-        [HttpPost]
-         public IActionResult Index(string FullName)
+
+        public async Task<IActionResult> Index()
         {
-            string strReturn = "Hello " + FullName;
-            //gui du lieu ve view
-            ViewBag.thongbao = strReturn;
-            return View();
-            //tra ve danh sach cac sinh vien trong Database
+            var model = await _context.Employee.ToListAsync();
+            return View(model);
         }
+
         public IActionResult Create()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult Create(Employee emp)
-        {
-            string kq = emp.EmployeeCode + "-" + emp.EmployeeName + "- " + emp.Address;
-            ViewBag.mess = kq;
-            return View(); 
-        }
-    }
 
+        public async Task<IActionResult> Create(Employee std)
+        {
+            if(ModelState.IsValid)
+            {
+                _context.Add(std);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(std);
+        }
+
+        public async Task<IActionResult> Edit(string id)
+        {
+            if( id == null)
+            {
+                return View("NotFound");
+            }
+
+            var employee = await _context.Employee.FindAsync(id);
+            if(employee == null)
+            {
+                return View("NotFound");
+            }
+            return View(employee);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+// Edit
+        public async Task<IActionResult> Edit(string id, [Bind("EmployeeID,EmployeeName,EmployeeAddress")] Employee std)
+        {
+            if(id != std.EmployeeID)
+            {
+                return View("NotFound");
+            }
+            if(ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(std);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if(!EmployeeExists(std.EmployeeID))
+                    {
+                        return View("NotFound");
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(std);
+        }
+        //Delelte
+            public async Task<IActionResult> Delete(string id)
+        {
+            if(id == null)
+            {
+                return View("NotFound");
+            }
+
+            var std = await _context.Employee.FirstOrDefaultAsync(m => m.EmployeeID ==id);
+            if(std == null)
+            {
+                return View("NotFound");
+            }
+            return View(std);
+        }
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+
+        public async Task<IActionResult> DeleteConfirmed(string id)
+        {
+
+            var std = await _context.Employee.FindAsync(id);
+            _context.Employee.Remove(std);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+
+        private bool EmployeeExists(string id)
+        {
+            return _context.Employee.Any(e => e.EmployeeID ==id);
+        }
+
+
+    }
 }
