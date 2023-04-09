@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using BaiThucHanh0703.Models;
-using BaiThucHanh0703.Models.Process;
-namespace BaiThucHanh0703.Controllers;
+using Baithuchanh2003.Models;
+using Baithuchanh2003.Models.Process;
+namespace Baithuchanh2003.Controllers;
 
     public class PersonController: Controller
     {
@@ -17,3 +17,4 @@ namespace BaiThucHanh0703.Controllers;
             return View();
         }
     }
+

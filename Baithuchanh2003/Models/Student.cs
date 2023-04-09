@@ -1,7 +1,7 @@
 
 using System.ComponentModel.DataAnnotations;
 
-namespace BaiThucHanh0703.Models
+namespace Baithuchanh2003.Models
 {
     public class Student
     {

@@ -1,15 +1,12 @@
 using BaiThucHanh0703.Models;
 using Microsoft.EntityFrameworkCore;
+namespace BaiThucHanh0703.Data;
 
-namespace BaiThucHanh0703.Data
-{
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext: DbContext 
     {
-        public ApplicationDbContext (DbContextOptions<ApplicationDbContext> options)
-            : base(options)
+        public ApplicationDbContext (DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-        }
 
-        public DbSet<Student> Student { get; set; }
+        }
+        public DbSet<Student> Students {get; set;}
     }
-}

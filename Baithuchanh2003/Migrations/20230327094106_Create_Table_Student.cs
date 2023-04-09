@@ -11,7 +11,7 @@ namespace Baithuchanh2003.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Student",
+                name: "Students",
                 columns: table => new
                 {
                     StudentCode = table.Column<string>(type: "TEXT", nullable: false),
@@ -20,7 +20,7 @@ namespace Baithuchanh2003.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Student", x => x.StudentCode);
+                    table.PrimaryKey("PK_Students", x => x.StudentCode);
                 });
         }
 
@@ -28,7 +28,7 @@ namespace Baithuchanh2003.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Student");
+                name: "Students");
         }
     }
 }
