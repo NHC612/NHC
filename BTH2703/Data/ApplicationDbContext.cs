@@ -11,5 +11,6 @@ namespace BTH2703.Data;
         public DbSet<Student> Students {get; set;}
         public DbSet<Employee> Employee {get;set;  }
         public DbSet<Customer> Customer {get;set;  }
-        public DbSet<Person> Person {get;set;}
+        public DbSet<BTH2703.Models.Person> Person { get; set; } = default!;
+    
     }
