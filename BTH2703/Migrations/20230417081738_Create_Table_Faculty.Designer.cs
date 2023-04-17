@@ -3,6 +3,7 @@ using System;
 using BTH2703.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BTH2703.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230417081738_Create_Table_Faculty")]
+    partial class Create_Table_Faculty
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.4");
@@ -98,31 +101,17 @@ namespace BTH2703.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("FaculltyID")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("FacultyID")
+                    b.Property<string>("FullName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("StudentName")
+                    b.Property<string>("StudentCode")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("StudentID");
 
-                    b.HasIndex("FaculltyID");
-
                     b.ToTable("Students");
-                });
-
-            modelBuilder.Entity("BTH2703.Models.Student", b =>
-                {
-                    b.HasOne("BTH2703.Models.Faculty", "Faculty")
-                        .WithMany()
-                        .HasForeignKey("FaculltyID");
-
-                    b.Navigation("Faculty");
                 });
 #pragma warning restore 612, 618
         }

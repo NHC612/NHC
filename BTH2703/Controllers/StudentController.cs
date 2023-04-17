@@ -48,6 +48,7 @@ namespace BTH2703.Controllers
         // GET: Student/Create
         public IActionResult Create()
         {
+            ViewData["FacultyID"] = new SelectList(_context.Faculty, "FacultyID", "FacultyName");
             return View();
         }
 
@@ -56,7 +57,7 @@ namespace BTH2703.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StudentID,StudentCode,FullName,Address")] Student student)
+        public async Task<IActionResult> Create([Bind("StudentID,StudentName,Address,FacultyID")] Student student)
         {
             if (ModelState.IsValid)
             {
@@ -65,6 +66,7 @@ namespace BTH2703.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["FacultyID"] = new SelectList(_context.Faculty, "FacultyID", "FacultyName", student.FacultyID);
             return View(student);
         }
 
@@ -89,7 +91,7 @@ namespace BTH2703.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("StudentID,StudentCode,FullName,Address")] Student student)
+        public async Task<IActionResult> Edit(Guid id, [Bind("StudentID,StudentName,Address,FacultyID")] Student student)
         {
             if (id != student.StudentID)
             {

@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BTH2703.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230410113028_Create_Table_Student")]
-    partial class Create_Table_Student
+    [Migration("20230417113931_Create_Foreignkey_Student")]
+    partial class Create_Foreignkey_Student
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -59,6 +59,20 @@ namespace BTH2703.Migrations
                     b.ToTable("Employee");
                 });
 
+            modelBuilder.Entity("BTH2703.Models.Faculty", b =>
+                {
+                    b.Property<string>("FacultyID")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FacultyName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("FacultyID");
+
+                    b.ToTable("Faculty");
+                });
+
             modelBuilder.Entity("BTH2703.Models.Person", b =>
                 {
                     b.Property<string>("PersonID")
@@ -87,17 +101,31 @@ namespace BTH2703.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("FullName")
+                    b.Property<string>("FaculltyID")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FacultyID")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("StudentCode")
+                    b.Property<string>("StudentName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("StudentID");
 
+                    b.HasIndex("FaculltyID");
+
                     b.ToTable("Students");
+                });
+
+            modelBuilder.Entity("BTH2703.Models.Student", b =>
+                {
+                    b.HasOne("BTH2703.Models.Faculty", "Faculty")
+                        .WithMany()
+                        .HasForeignKey("FaculltyID");
+
+                    b.Navigation("Faculty");
                 });
 #pragma warning restore 612, 618
         }
